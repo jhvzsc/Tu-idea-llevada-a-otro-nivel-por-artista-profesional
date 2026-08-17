@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Castillo Tattoo | Arte en la Piel</title>
+  <style>
+    :root {
+      --bg-dark: #0a0a0a;
+      --card-bg: #141414;
+      --accent: #d4af37;
+      --text: #f0f0f0;
+      --text-muted: #a0a0a0;
+      --border: #222222;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 5%;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--text);
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-size: 0.85rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      position: relative;
+      padding: 7rem 5% 6rem;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0.75) 0%, rgba(10, 10, 10, 0.95) 100%), 
+                  url('https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      padding: 0.3rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+
+    .hero p {
+      color: #e0e0e0;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      text-shadow: 0 1px 5px rgba(0,0,0,0.8);
+    }
+
+    .artist-name {
+      display: inline-block;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background: rgba(10, 10, 10, 0.6);
+    }
+
+    .about {
+      background: var(--card-bg);
+      padding: 4rem 5%;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 1.8rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .gallery-section {
+      padding: 5rem 5%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+    }
+
+    .card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .card-content h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .card-content p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .info-section {
+      background: var(--card-bg);
+      padding: 4rem 5%;
+      border-top: 1px solid var(--border);
+    }
+
+    .info-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .info-box h3 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+    }
+
+    .info-box p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem 5%;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">CASTILLO<span> TATTOO</span></div>
+    <nav>
+      <a href="#artista">La Artista</a>
+      <a href="#estilos">Estilos</a>
+      <a href="#info">Información</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <span class="badge">Estudio Profesional</span>
+      <h1>Arte en la Piel con Criterio de Diseño</h1>
+      <p>Especialización en Blackwork, exploración de Color y composición de proyectos de gran formato adaptados a tu cuerpo.</p>
+      <span class="artist-name">Sandrimar Velasco (Mar)</span>
+    </div>
+  </section>
+
+  <section id="artista" class="about">
+    <div class="about-container">
+      <div class="about-text">
+        <h2>Sandrimar Velasco (Mar)</h2>
+        <p><strong>TSU en Diseño Gráfico & Tatuadora</strong></p>
+        <br>
+        <p>Con trayectoria desde la infancia en artes plásticas y formación en diseño digital, cada pieza en Castillo Tattoo se concibe como un proyecto visual único perfectamente estructurado y adaptado a la anatomía del cliente.</p>
+      </div>
+      <div style="border: 1px solid var(--border); padding: 1.5rem; border-radius: 6px; background: var(--bg-dark);">
+        <h3 style="color: var(--accent); margin-bottom: 0.8rem;">Metodología de Trabajo</h3>
+        <p>• Asesoría y diseño digital personalizado</p>
+        <p>• Especialista en Blackwork y sombras</p>
+        <p>• Investigación e integración cromática</p>
+        <p>• Proyectos integrales (mangas y espaldas)</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="estilos" class="gallery-section">
+    <h2 class="section-title">Estilos & Especialidades</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=600&q=80" alt="Tatuaje Blackwork">
+        <div class="card-content">
+          <h3>Blackwork</h3>
+          <p>Alto contraste, saturación sólida en negro profundo y máxima durabilidad en la piel.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&w=600&q=80" alt="Tatuaje Fine Line">
+        <div class="card-content">
+          <h3>Fine Line / Línea Fina</h3>
+          <p>Trazos limpios, sutiles y elegantes diseñados con precisión y delicadeza.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?auto=format&fit=crop&w=600&q=80" alt="Tatuaje de Color">
+        <div class="card-content">
+          <h3>Color & Experimentación</h3>
+          <p>Exploración de pigmentos vibrantes y matices para darle dimensión al diseño.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="info" class="info-section">
+    <div class="info-container">
+      <div class="info-box">
+        <h3>Ubicación</h3>
+        <p>San Cristóbal, Estado Táchira</p>
+        <p>Venezuela</p>
+      </div>
+      <div class="info-box">
+        <h3>Atención</h3>
+        <p>Lunes a Sábado</p>
+        <p>Sesiones mediante cita previa</p>
+      </div>
+      <div class="info-box">
+        <h3>Métodos Aceptados</h3>
+        <p>Pago Móvil / Efectivo</p>
+        <p>Zelle / Binance</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© Castillo Tattoo. San Cristóbal, Venezuela. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>
